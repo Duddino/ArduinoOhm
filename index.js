@@ -16,8 +16,6 @@ io.on("connection", (socket)=>{
 })
 
 
-
-
 const five = require("johnny-five")
 
 const Pin = five.Pin
@@ -42,5 +40,4 @@ arduino.on("ready", async ()=>{
         console.log(resistenza)
         await delay(1000)
     }
-
 })
