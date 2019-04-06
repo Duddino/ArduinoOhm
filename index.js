@@ -1,5 +1,23 @@
 //@ts-check
 
+const express = require("express")
+const app = express()
+app.use(express.static("public"))
+const server = app.listen("80")
+const io = require("socket.io")(server)
+let resistenza = 0
+io.on("connection", (socket)=>{
+    const interval = setInterval(()=>{
+        socket.emit("resistenza", resistenza)
+    }, 1000)
+    socket.on("disconnect", ()=>{
+        clearInterval(interval)
+    })
+})
+
+
+
+
 const five = require("johnny-five")
 
 const Pin = five.Pin
@@ -20,7 +38,7 @@ arduino.on("ready", async ()=>{
         const digitalVolt = await analogRead(input)
         const analogVolt = 5*digitalVolt/1023
         const corrente = (5-analogVolt)/resistenzaNota
-        const resistenza = analogVolt/corrente
+        resistenza = analogVolt/corrente
         console.log(resistenza)
         await delay(1000)
     }
