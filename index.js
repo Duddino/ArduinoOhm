@@ -1,0 +1,28 @@
+//@ts-check
+
+const five = require("johnny-five")
+
+const Pin = five.Pin
+const Board = five.Board
+
+const arduino = new Board()
+arduino.on("ready", async ()=>{
+    const delay = ms=>new Promise(res=>arduino.wait(ms, res))
+    const analogRead = pin=>new Promise((res, err)=>pin.read((error, value)=>{
+        if(error) err(err)
+        else res(value)
+    }))
+    const resistenzaNota=36000
+
+    const input=new Pin("A0")
+
+    while(true){
+        const digitalVolt = await analogRead(input)
+        const analogVolt = 5*digitalVolt/1023
+        const corrente = (5-analogVolt)/resistenzaNota
+        const resistenza = analogVolt/corrente
+        console.log(resistenza)
+        await delay(1000)
+    }
+
+})

@@ -1,0 +1,25 @@
+{
+  "name": "arduinoohm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Duddino/ArduinoOhm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Duddino/ArduinoOhm/issues"
+  },
+  "homepage": "https://github.com/Duddino/ArduinoOhm#readme",
+  "dependencies": {
+    "firmata-party": "^1.5.10",
+    "johnny-five": "^1.0.0",
+    "socket.io": "^2.2.0"
+  }
+}
