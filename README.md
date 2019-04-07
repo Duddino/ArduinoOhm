@@ -6,5 +6,6 @@ Il programma usa [node.js](https://nodejs.org/en/), [socket.io](https://socket.i
 2. Installare [git bash](https://git-scm.com/download/win)
 3. In una cartella fare shift-click sinistro e selezionare "Apri finestra PowerShell/Git Bash/cmd" e digitare ``` https://github.com/Duddino/ArduinoOhm.git```
 4. Una volta finito digitare ```npm i -g firmata-party``` e ```npm i``` per scaricare le librerie
+5. Collegare l'arduino e digitare ```firmata-party uno```
 5. Digitare ```npm start``` per avviare il programma
 6. Aprire l'indirizzo [localhost](http://localhost/)
