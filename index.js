@@ -29,7 +29,7 @@ arduino.on("ready", async ()=>{ //quando l'arduino è pronto, esegui la funzione
         if(error) err(err)
         else res(value)
     }))
-    const resistenzaNota=36000 //il valore della resistenza nota
+    const resistenzaNota=336 //il valore della resistenza nota
 
     const input=new Pin("A0") //il pin di input
 

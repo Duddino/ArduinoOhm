@@ -13,6 +13,8 @@ function start(){
     const socket = io.connect('http://localhost') //connettiti al server
     socket.on("resistenza", resistenza=>{ //quando ottieni la resistenza aggiorna la pagina
         document.getElementById("resistenza").innerHTML=`La resistenza è ${resistenza} Ω`
+        // @ts-ignore
+        draw(resistenza, document.getElementById("canvas"))
     })
 }
 
@@ -44,4 +46,21 @@ function getNearest(number){
         return prev
     }, {index:-1, score:Infinity})
     return resistenze[tolleranza][lowest.index]
+}
+/**
+ * @param {number} resistenza
+ * @param {HTMLCanvasElement} canvas
+ */
+function draw(resistenza, canvas){
+    const w = canvas.width
+    const h = canvas.height
+    getColors(resistenza)
+    const context = canvas.getContext("2d")
+    context.fillStyle="#000000"
+    context.fillRect(0,0, w, h)
+    getColors(resistenza).forEach((color, i)=>{
+        context.fillStyle=color
+        context.fillRect(w/3*i,0, w/3, h)
+    })
+    
 }
