@@ -30,7 +30,7 @@ function getColors(number){
         colors.push(resistenze.colors[char])
     }
     colors.push(resistenze.colors[nominal.length-2])
-    colors.push("gold")
+    colors.push("#D4AF37")
     return colors
 }
 /**
@@ -58,9 +58,9 @@ function draw(resistenza, canvas){
     const context = canvas.getContext("2d")
     context.fillStyle="#000000"
     context.fillRect(0,0, w, h)
-    getColors(resistenza).forEach((color, i)=>{
+    getColors(resistenza).forEach((color, i, arr)=>{
         context.fillStyle=color
-        context.fillRect(w/3*i,0, w/3, h)
+        context.fillRect(w/arr.length*i,0, w/arr.length, h)
     })
     
 }
