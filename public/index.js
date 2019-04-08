@@ -12,7 +12,7 @@ function start(){
     // @ts-ignore
     const socket = io.connect('http://localhost') //connettiti al server
     socket.on("resistenza", resistenza=>{ //quando ottieni la resistenza aggiorna la pagina
-        document.getElementById("resistenza").innerHTML=`La resistenza è ${resistenza} Ω`
+        document.getElementById("resistenza").innerHTML=`La resistenza è ${resistenza} Ω; La resistenza nominale è ${getNearest(resistenza)}Ω`
         // @ts-ignore
         draw(resistenza, document.getElementById("canvas"))
     })
@@ -60,6 +60,7 @@ function draw(resistenza, canvas){
     context.fillRect(0,0, w, h)
     getColors(resistenza).forEach((color, i, arr)=>{
         context.fillStyle=color
+        const percent=0.8
         context.fillRect(w/arr.length*i,0, w/arr.length, h)
     })
     
